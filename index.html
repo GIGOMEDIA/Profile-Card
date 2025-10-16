@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Card | HNG Stage 0</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <article data-testid="test-profile-card" class="profile-card" aria-label="User profile card">
+
+    <div class="card-body">
+      <figure class="avatar-figure">
+        <img
+          src="photo (1).jpg"
+          alt="Profile photo of Owoade Gratitude"
+          data-testid="test-user-avatar"
+          class="avatar"
+        />
+        <figcaption class="sr-only">Avatar of Owoade Gratitude</figcaption>
+        <div class="avatar-header">
+          <h2 data-testid="test-user-name">Owoade Gratitude</h2>
+          <p class="role">Frontend Developer</p>
+        </div>
+      </figure>
+
+      <div class="card-content">
+        <p data-testid="test-user-bio" class="bio">
+          Passionate frontend developer and designer, currently interning with HNG.
+          I love building creative interfaces and helping brands tell visual stories.
+        </p>
+
+        <p class="time-row">
+          <strong>Current Time (ms):</strong>
+          <span data-testid="test-user-time" id="time" aria-live="polite"></span>
+        </p>
+
+        <nav aria-label="Social links">
+          <ul data-testid="test-user-social-links" class="social-links">
+            <li>
+              <a
+                href="https://x.com/GIGTV250437"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="test-user-social-twitter"
+              >X</a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/GIGOMEDIA/Profile-Card.git"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="test-user-social-github"
+              >GitHub</a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/owoade-gratitude-77437b233"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="test-user-social-linkedin"
+              >LinkedIn</a>
+            </li>
+          </ul>
+        </nav>
+
+        <section class="lists">
+          <div>
+            <h3>Hobbies</h3>
+            <ul data-testid="test-user-hobbies">
+              <li>Designing</li>
+              <li>Reading</li>
+              <li>Photography</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Dislikes</h3>
+            <ul data-testid="test-user-dislikes">
+              <li>Procrastination</li>
+              <li>Messy Code</li>
+              <li>Lateness</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="avatar-controls">
+          <h4>Update avatar</h4>
+          <label for="avatarUrl">Avatar URL</label>
+          <input id="avatarUrl" type="url" placeholder="https://example.com/me.jpg" aria-label="Avatar URL input" />
+          <label for="avatarFile">Or upload an image</label>
+          <input id="avatarFile" type="file" accept="image/*" aria-label="Upload avatar file" />
+          <button id="applyAvatar" type="button">Apply</button>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <script src="script.js"></script>
+</body>
+</html>
