@@ -91,4 +91,29 @@ body {
 .error{color:#b91c1c;font-size:0.95rem;margin-top:0.25rem}
 .success{color:#065f46;font-size:1rem;margin-top:0.5rem}
 
+/* Pages: About & Contact layout */
+main{max-width:900px;margin:0 auto;padding:1rem}
+
+/* About page */
+main h1{font-size:1.6rem;margin-bottom:0.25rem}
+main header nav{margin-bottom:1rem}
+main section{background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 2px 8px rgba(16,24,40,0.04);margin-bottom:0.75rem}
+main section h2{margin-top:0;margin-bottom:0.5rem}
+
+/* Contact page */
+form#contactForm{background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 2px 12px rgba(16,24,40,0.06);max-width:720px;margin:0 auto}
+.form-row{margin-bottom:0.85rem}
+.form-row input[type="text"], .form-row input[type="email"], .form-row input, .form-row textarea{width:100%;}
+.form-row button, .form-row button[type="submit"]{background:var(--accent);color:white;border:none;padding:0.6rem 0.9rem;border-radius:8px;cursor:pointer}
+.form-row button:focus{outline:3px solid rgba(37,99,235,0.18)}
+
+/* Responsive enhancements */
+@media (min-width:700px){
+  .form-row{flex-direction:row;align-items:center}
+  .form-row label{flex:0 0 180px;margin-bottom:0}
+  .form-row input,.form-row textarea{flex:1}
+  form#contactForm{padding:1.25rem}
+}
+
+
 
