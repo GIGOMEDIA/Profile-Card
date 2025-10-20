@@ -8,22 +8,37 @@ function updateTime(){
 updateTime();
 setInterval(updateTime, 1000);
 
-// Avatar update handlers
+// Avatar update handlers (work on index or about page)
 const avatarImg = document.querySelector('[data-testid="test-user-avatar"]');
-const urlInput = document.getElementById('avatarUrl');
-const fileInput = document.getElementById('avatarFile');
-const applyBtn = document.getElementById('applyAvatar');
+let urlInput = document.getElementById('avatarUrl');
+let fileInput = document.getElementById('avatarFile');
+let applyBtn = document.getElementById('applyAvatar');
 
-function setAvatarFromUrl(url){
-  if(!url) return;
+function setAvatarFromUrl(url, persist = true){
+  if(!avatarImg || !url) return;
   avatarImg.src = url;
+  if(persist){
+    localStorage.setItem('profile_avatar', url);
+  }
 }
 
-function setAvatarFromFile(file){
-  if(!file) return;
+function setAvatarFromFile(file, persist = false){
+  if(!avatarImg || !file) return;
   const url = URL.createObjectURL(file);
   avatarImg.src = url;
+  // do not persist blobs in localStorage; optionally persist the object URL is not useful across reloads
 }
+
+// populate from storage if available
+const stored = localStorage.getItem('profile_avatar');
+if(stored && avatarImg){
+  avatarImg.src = stored;
+}
+
+// re-query controls in case they exist on this page (About page)
+urlInput = document.getElementById('avatarUrl');
+fileInput = document.getElementById('avatarFile');
+applyBtn = document.getElementById('applyAvatar');
 
 applyBtn?.addEventListener('click', ()=>{
   const url = urlInput?.value?.trim();
@@ -69,5 +84,13 @@ window.__profileCard = {
 
     nav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setOpen(false)));
   });
+})();
+
+// Card buttons (index) navigation
+;(function(){
+  const aboutBtn = document.querySelector('[data-testid="test-card-about"]');
+  const contactBtn = document.querySelector('[data-testid="test-card-contact"]');
+  if(aboutBtn) aboutBtn.addEventListener('click', ()=> location.href = 'about.html');
+  if(contactBtn) contactBtn.addEventListener('click', ()=> location.href = 'contact.html');
 })();
 

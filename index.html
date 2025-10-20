@@ -8,22 +8,7 @@
 </head>
 <body>
   <article data-testid="test-profile-card" class="profile-card" aria-label="User profile card">
-    <button class="nav-toggle card-nav-toggle" aria-controls="top-navigation" aria-expanded="false" aria-label="Open navigation">
-      <span class="hamburger" aria-hidden="true"><div></div></span>
-    </button>
-    <header class="site-header overlap">
-      <div class="brand">
-        <a href="index.html"><span class="brand-name"></span></a>
-      </div>
-      <button class="nav-toggle" aria-controls="top-navigation" aria-expanded="false" aria-label="Open navigation">
-        <span class="hamburger" aria-hidden="true"><div></div></span>
-      </button>
-      <nav id="top-navigation" class="top-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
+    <!-- All content is inside the profile card -->
 
     <div class="card-body">
       <figure class="avatar-figure">
@@ -41,65 +26,15 @@
       </figure>
 
       <div class="card-content">
-        <p data-testid="test-user-bio" class="bio">
-          Passionate frontend developer and designer, currently interning with HNG.
-          I love building creative interfaces and helping brands tell visual stories.
-        </p>
+        <nav class="card-nav" aria-label="Card navigation">
+          <button type="button" class="card-btn" data-testid="test-card-about">About</button>
+          <button type="button" class="card-btn" data-testid="test-card-contact">Contact</button>
+        </nav>
 
         <p class="time-row">
           <strong>Current Time (ms):</strong>
           <span data-testid="test-user-time" id="time" aria-live="polite"></span>
         </p>
-
-        <nav aria-label="Social links">
-          <ul data-testid="test-user-social-links" class="social-links">
-            <li>
-              <a
-                href="https://x.com/GIGTV250437"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="test-user-social-twitter"
-              >X</a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/GIGOMEDIA/Profile-Card.git"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="test-user-social-github"
-              >GitHub</a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/owoade-gratitude-77437b233"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="test-user-social-linkedin"
-              >LinkedIn</a>
-            </li>
-          </ul>
-        </nav>
-
-        <section class="lists">
-          <div>
-            <h3>Hobbies</h3>
-            <ul data-testid="test-user-hobbies">
-              <li>Designing</li>
-              <li>Reading</li>
-              <li>Photography</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3>Dislikes</h3>
-            <ul data-testid="test-user-dislikes">
-              <li>Procrastination</li>
-              <li>Messy Code</li>
-              <li>Lateness</li>
-            </ul>
-          </div>
-        </section>
-
         <section class="avatar-controls">
           <h4>Update avatar</h4>
           <label for="avatarUrl">Avatar URL</label>
