@@ -43,25 +43,31 @@ window.__profileCard = {
   updateTime, setAvatarFromUrl, setAvatarFromFile
 };
 
-// Mobile nav toggle
+// Mobile nav toggle - support multiple toggles (header and card toggle)
 ;(function(){
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('top-navigation');
-  if(!toggle || !nav) return;
+  const toggles = Array.from(document.querySelectorAll('.nav-toggle'));
+  if(!toggles.length) return;
 
-  function setOpen(open){
-    nav.classList.toggle('show', !!open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    // update label for screen readers
-    toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-  }
+  toggles.forEach(toggle => {
+    // find the closest nav for this toggle: prefer sibling with id top-navigation or next .top-nav
+    const header = toggle.closest('.site-header') || toggle.closest('.profile-card') || document;
+    let nav = header.querySelector('#top-navigation');
+    if(!nav) nav = header.querySelector('.top-nav');
+    if(!nav) nav = document.getElementById('top-navigation');
+    if(!nav) return;
 
-  toggle.addEventListener('click', ()=>{
-    const isOpen = nav.classList.contains('show');
-    setOpen(!isOpen);
+    function setOpen(open){
+      nav.classList.toggle('show', !!open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    }
+
+    toggle.addEventListener('click', ()=>{
+      const isOpen = nav.classList.contains('show');
+      setOpen(!isOpen);
+    });
+
+    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setOpen(false)));
   });
-
-  // close when link clicked (mobile)
-  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setOpen(false)));
 })();
 

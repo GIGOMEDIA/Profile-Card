@@ -126,20 +126,26 @@ body {
 .nav-toggle .hamburger{display:inline-block;width:28px;height:18px;position:relative}
 .nav-toggle .hamburger div,
 .nav-toggle .hamburger div::before,
-.nav-toggle .hamburger div::after{content:"";position:absolute;height:2px;background:var(--text);left:0;right:0;border-radius:2px}
+.nav-toggle .hamburger div::after{content:"";position:absolute;height:2px;background:color-mix(in srgb, var(--text) 85%, black 15%);left:0;right:0;border-radius:2px}
 .nav-toggle .hamburger div{top:50%;transform:translateY(-50%)}
 .nav-toggle .hamburger div::before{top:-7px}
 .nav-toggle .hamburger div::after{top:7px}
 
 /* Mobile: hide nav by default and show toggle */
 @media (max-width: 699px){
-  .nav-toggle{display:inline-flex;align-items:center;z-index:1100;background:var(--card);border:1px solid rgba(0,0,0,0.06);padding:0.4rem;border-radius:8px;box-shadow:0 4px 10px rgba(16,24,40,0.06)}
+  .nav-toggle{display:inline-flex;align-items:center;z-index:1300;background:var(--card);border:1px solid rgba(0,0,0,0.08);padding:0.45rem;border-radius:10px;box-shadow:0 6px 14px rgba(16,24,40,0.08)}
   .nav-toggle .hamburger{width:30px;height:20px}
   .top-nav{display:none;position:absolute;top:100%;right:0;background:var(--card);box-shadow:0 6px 18px rgba(16,24,40,0.08);border-radius:8px;padding:0.5rem;flex-direction:column;min-width:160px;z-index:999}
   .top-nav a{display:block;padding:0.6rem 0.9rem}
   .top-nav.show{display:flex}
   /* ensure header stays relative for absolute positioning */
   .site-header{position:relative}
+}
+
+/* card-specific toggle: place it inside the top-right of the card on small screens */
+@media (max-width: 699px){
+  .card-nav-toggle{position:absolute;top:8px;right:8px;z-index:1250;background:var(--card);}
+  .profile-card{position:relative}
 }
 
 /* header avatar */
