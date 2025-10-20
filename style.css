@@ -133,8 +133,13 @@ body {
 
 /* Mobile: hide nav by default and show toggle */
 @media (max-width: 699px){
-  .nav-toggle{display:inline-flex;align-items:center;z-index:1300;background:var(--card);border:1px solid rgba(0,0,0,0.08);padding:0.45rem;border-radius:10px;box-shadow:0 6px 14px rgba(16,24,40,0.08)}
-  .nav-toggle .hamburger{width:30px;height:20px}
+  /* make the toggle highly visible on mobile: circular accent background and white bars */
+  .nav-toggle{display:inline-flex;align-items:center;z-index:1300;background:var(--accent);border:1px solid rgba(0,0,0,0.06);padding:0.45rem;border-radius:999px;box-shadow:0 6px 18px rgba(16,24,40,0.12)}
+  .nav-toggle .hamburger{width:34px;height:22px}
+  .nav-toggle .hamburger div,
+  .nav-toggle .hamburger div::before,
+  .nav-toggle .hamburger div::after{background: #fff}
+  .nav-toggle{width:44px;height:44px;justify-content:center}
   .top-nav{display:none;position:absolute;top:100%;right:0;background:var(--card);box-shadow:0 6px 18px rgba(16,24,40,0.08);border-radius:8px;padding:0.5rem;flex-direction:column;min-width:160px;z-index:999}
   .top-nav a{display:block;padding:0.6rem 0.9rem}
   .top-nav.show{display:flex}
@@ -146,6 +151,14 @@ body {
 @media (max-width: 699px){
   .card-nav-toggle{position:absolute;top:8px;right:8px;z-index:1250;background:var(--card);}
   .profile-card{position:relative}
+}
+
+@media (max-width: 699px){
+  /* ensure card toggle also uses accent background */
+  .card-nav-toggle{background:var(--accent);border:1px solid rgba(0,0,0,0.06)}
+  .card-nav-toggle .hamburger div,
+  .card-nav-toggle .hamburger div::before,
+  .card-nav-toggle .hamburger div::after{background:#fff}
 }
 
 /* header avatar */
