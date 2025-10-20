@@ -133,7 +133,8 @@ body {
 
 /* Mobile: hide nav by default and show toggle */
 @media (max-width: 699px){
-  .nav-toggle{display:inline-flex;align-items:center}
+  .nav-toggle{display:inline-flex;align-items:center;z-index:1100;background:var(--card);border:1px solid rgba(0,0,0,0.06);padding:0.4rem;border-radius:8px;box-shadow:0 4px 10px rgba(16,24,40,0.06)}
+  .nav-toggle .hamburger{width:30px;height:20px}
   .top-nav{display:none;position:absolute;top:100%;right:0;background:var(--card);box-shadow:0 6px 18px rgba(16,24,40,0.08);border-radius:8px;padding:0.5rem;flex-direction:column;min-width:160px;z-index:999}
   .top-nav a{display:block;padding:0.6rem 0.9rem}
   .top-nav.show{display:flex}
