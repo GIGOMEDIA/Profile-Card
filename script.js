@@ -42,3 +42,4 @@ applyBtn?.addEventListener('click', ()=>{
 window.__profileCard = {
   updateTime, setAvatarFromUrl, setAvatarFromFile
 };
+
