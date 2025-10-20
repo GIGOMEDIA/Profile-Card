@@ -1,4 +1,4 @@
-# Profile Card — HNG Stage 0
+# Profile Card — HNG Stage 1
 
 This is a small, accessible, responsive Profile Card built with plain HTML, CSS, and vanilla JavaScript. All visible elements include the required `data-testid` attributes for automated testing.
 
