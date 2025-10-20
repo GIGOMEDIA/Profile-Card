@@ -79,3 +79,16 @@ body {
   .profile-card{max-width:1000px}
 }
 
+/* top navigation */
+.top-nav{display:flex;gap:0.75rem;justify-content:flex-end;margin-bottom:0.5rem}
+.top-nav a{color:var(--muted);text-decoration:none}
+.top-nav a:focus{outline:2px solid rgba(37,99,235,0.12)}
+
+/* forms */
+.form-row{display:flex;flex-direction:column;margin-bottom:0.75rem}
+.form-row label{font-weight:600;margin-bottom:0.25rem}
+.form-row input,.form-row textarea{padding:0.5rem;border:1px solid #e5e7eb;border-radius:6px}
+.error{color:#b91c1c;font-size:0.95rem;margin-top:0.25rem}
+.success{color:#065f46;font-size:1rem;margin-top:0.5rem}
+
+
