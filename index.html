@@ -10,9 +10,12 @@
   <article data-testid="test-profile-card" class="profile-card" aria-label="User profile card">
     <header class="site-header overlap">
       <div class="brand">
-  <a href="index.html"><span class="brand-name"></span></a>
+        <a href="index.html"><span class="brand-name"></span></a>
       </div>
-      <nav class="top-nav">
+      <button class="nav-toggle" aria-controls="top-navigation" aria-expanded="false" aria-label="Open navigation">
+        <span class="hamburger" aria-hidden="true"><div></div></span>
+      </button>
+      <nav id="top-navigation" class="top-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>

@@ -91,12 +91,55 @@ body {
   .profile-card{max-width:1000px}
 }
 
+/* Mobile specific tweaks */
+@media (max-width: 480px) {
+  body { padding: 1rem; }
+  .site-header.overlap { margin: -1.25rem -0.5rem 0 -0.5rem; padding: 0.5rem; border-radius: 8px; }
+  .top-nav { flex-direction: column; gap: 0.5rem; align-items: center; }
+  .top-nav a { display: inline-block; padding: 0.4rem 0.6rem; }
+  .profile-card { padding: 0.75rem; }
+  .avatar { width: 110px; height: 110px; margin: 0 auto; }
+  .avatar-figure { text-align: center; }
+  .avatar-header { align-items: center; }
+  .card-body { gap: 0.75rem; }
+  .form-row { flex-direction: column; }
+  main { padding: 0.75rem; }
+}
+
+/* Slightly larger phones / small tablets */
+@media (min-width: 481px) and (max-width: 699px) {
+  .top-nav { gap: 0.6rem; }
+  .avatar { width: 120px; height: 120px; margin: 0 auto; }
+  .profile-card { padding: 0.9rem; }
+}
+
 /* top navigation */
 .site-header{display:flex;justify-content:space-between;align-items:center;max-width:1000px;margin:0 auto;padding:0.5rem 1rem;background:var(--nav-bg);border-radius:8px}
 .brand a{font-weight:700;color:var(--text);text-decoration:none}
 .top-nav{display:flex;gap:0.75rem;align-items:center}
 .top-nav a{color:var(--muted);text-decoration:none;padding:0.35rem 0.5rem;border-radius:6px}
 .top-nav a:hover{background:rgba(0,0,0,0.04)}
+
+/* Hamburger / mobile nav */
+.nav-toggle{display:none;background:transparent;border:0;padding:0.25rem;border-radius:6px;cursor:pointer}
+.nav-toggle:focus{outline:3px solid rgba(37,99,235,0.18)}
+.nav-toggle .hamburger{display:inline-block;width:28px;height:18px;position:relative}
+.nav-toggle .hamburger div,
+.nav-toggle .hamburger div::before,
+.nav-toggle .hamburger div::after{content:"";position:absolute;height:2px;background:var(--text);left:0;right:0;border-radius:2px}
+.nav-toggle .hamburger div{top:50%;transform:translateY(-50%)}
+.nav-toggle .hamburger div::before{top:-7px}
+.nav-toggle .hamburger div::after{top:7px}
+
+/* Mobile: hide nav by default and show toggle */
+@media (max-width: 699px){
+  .nav-toggle{display:inline-flex;align-items:center}
+  .top-nav{display:none;position:absolute;top:100%;right:0;background:var(--card);box-shadow:0 6px 18px rgba(16,24,40,0.08);border-radius:8px;padding:0.5rem;flex-direction:column;min-width:160px;z-index:999}
+  .top-nav a{display:block;padding:0.6rem 0.9rem}
+  .top-nav.show{display:flex}
+  /* ensure header stays relative for absolute positioning */
+  .site-header{position:relative}
+}
 
 /* header avatar */
 .header-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:0.5rem;border:2px solid transparent}

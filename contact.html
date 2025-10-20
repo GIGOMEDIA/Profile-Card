@@ -10,7 +10,10 @@
   <main>
     <header class="site-header">
       <div class="brand"><a href="index.html"><img src="photo (1).jpg" alt="Owoade Gratitude" class="header-avatar" data-testid="test-header-avatar"/></a></div>
-      <nav class="top-nav">
+      <button class="nav-toggle" aria-controls="top-navigation" aria-expanded="false" aria-label="Open navigation">
+        <span class="hamburger" aria-hidden="true"><div></div></span>
+      </button>
+      <nav id="top-navigation" class="top-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
       </nav>

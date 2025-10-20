@@ -43,3 +43,25 @@ window.__profileCard = {
   updateTime, setAvatarFromUrl, setAvatarFromFile
 };
 
+// Mobile nav toggle
+;(function(){
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('top-navigation');
+  if(!toggle || !nav) return;
+
+  function setOpen(open){
+    nav.classList.toggle('show', !!open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    // update label for screen readers
+    toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  }
+
+  toggle.addEventListener('click', ()=>{
+    const isOpen = nav.classList.contains('show');
+    setOpen(!isOpen);
+  });
+
+  // close when link clicked (mobile)
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setOpen(false)));
+})();
+
