@@ -147,6 +147,14 @@ body {
   .site-header{position:relative}
 }
 
+/* Sticky headers for About and Contact pages */
+.site-header.sticky{position:sticky;top:0;left:0;right:0;z-index:1400;background:var(--card);box-shadow:0 6px 18px rgba(16,24,40,0.06);border-radius:0}
+.has-sticky{padding-top:64px}
+
+@media (max-width:699px){
+  .has-sticky{padding-top:56px}
+}
+
 /* card-specific toggle: place it inside the top-right of the card on small screens */
 @media (max-width: 699px){
   .card-nav-toggle{position:absolute;top:8px;right:8px;z-index:1250;background:var(--card);}
