@@ -1,220 +1,472 @@
 :root{
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --accent: #2563eb;
-  --muted: #6b7280;
-  --text: #111827;
-  --nav-bg: transparent;
+  --bg: #f8fafc; /* Light background */
+  --card: #ffffff; /* White card background */
+  --accent: #2563eb; /* Blue accent color */
+  --accent-hover: #1e40af; /* Darker blue for hover */
+  --muted: #6b7280; /* Grey text for secondary elements */
+  --text: #111827; /* Dark text for readability */
+  --error: #b91c1c; /* Red for errors */
+  --success: #065f46; /* Green for success */
 }
 
-/* single (light) theme only */
-
-*{box-sizing: border-box}
-html,body{height:100%}
+/* Base Styles */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   background: var(--bg);
   color: var(--text);
   margin: 0;
-  padding: 2rem;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Anchor styling */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------ */
+/* Site Header / Navigation (About & Contact Pages) */
+/* ------------------------------------------------ */
+
+.site-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--card);
+  /* The header is fixed/sticky on the About/Contact pages */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.brand a {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  object-fit: cover;
+}
+
+/* Navigation Menu */
+.top-nav {
+  display: none; /* Hidden by default on mobile */
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--card);
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--bg);
+}
+
+.top-nav.show {
+  display: flex;
+}
+
+.top-nav a {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bg);
+  color: var(--text);
+}
+.top-nav a:last-child {
+  border-bottom: none;
+}
+.top-nav a:hover {
+  color: var(--accent);
+}
+
+/* Navigation Toggle Button (Hamburger) */
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.hamburger div {
+  width: 24px;
+  height: 3px;
+  background: var(--text);
+  margin: 4px 0;
+  border-radius: 2px;
+}
+
+/* Content adjustment for fixed header on About/Contact pages */
+.has-sticky {
+  padding-top: 56px; /* Space for the fixed header on mobile */
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Desktop Styles for Header */
+@media (min-width: 700px) {
+  .site-header {
+    padding: 0.75rem 2rem;
+  }
+  .nav-toggle {
+    display: none; /* Hide hamburger on desktop */
+  }
+  .top-nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    border-top: none;
+    padding: 0;
+  }
+  .top-nav a {
+    padding: 0 0.75rem;
+    border-bottom: none;
+  }
+  .has-sticky {
+    padding-top: 72px; /* Adjusted padding for larger header */
+  }
+}
+
+/* ------------------------------------------------ */
+/* Profile Card (index.html) Styles - CENTERING FIX */
+/* ------------------------------------------------ */
+
+/* This centers the card on the index page (requires <body class="is-index">) */
+body.is-index {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 2rem 1rem; /* Add padding for small screens */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    margin: 0;
 }
 
 .profile-card {
   background: var(--card);
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(16,24,40,0.08);
-  padding: 1rem;
-  width: 50%;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(16, 24, 40, 0.1);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 360px;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+  margin: 0 auto; /* Centers horizontally */
+}
+
+
+.avatar-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  margin-bottom: 1rem;
+}
+
+.avatar-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.role {
+  color: var(--muted);
+  font-weight: 500;
+  margin: 0.25rem 0 0 0;
+}
+
+.card-nav {
+  display: flex;
   gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
-/* compact centered card for index */
-.profile-card.small-card{max-width:340px;padding:1rem;margin:2rem auto}
-.profile-card.small-card .card-body{align-items:center}
-.profile-card.small-card .avatar-figure{text-align:center}
-.profile-card.small-card .avatar{width:110px;height:110px}
-.profile-card.small-card .avatar-header{align-items:center}
-.profile-card.small-card .card-content{text-align:center}
-.card-nav{display:flex;gap:0.5rem;justify-content:center;margin-bottom:0.5rem}
-.card-btn{background:var(--accent);color:#fff;border:none;padding:0.45rem 0.7rem;border-radius:8px;cursor:pointer}
-.card-btn:focus{outline:3px solid rgba(37,99,235,0.18)}
-
-/* overlapping header variant used on the main page */
-.profile-card{padding-top:1rem}
-
-/* small visual overlap: header sits above card */
-.site-header.overlap{position:relative;z-index:6;margin:-2.25rem -1rem 0 -1rem;padding:0.75rem 1rem;background:var(--nav-bg);border-radius:10px}
-.profile-card{padding-top:2.5rem}
-
-.card-header{
-  display:flex;
-  gap:1rem;
-  align-items:center;
-}
-.card-header h2{margin:0;font-size:1.25rem}
-.role{margin:0;color:var(--muted);font-size:0.95rem}
-
-.card-body{display:flex;flex-direction:column;gap:1rem}
-
-.avatar-figure{margin:0}
-.avatar{width:120px;height:120px;object-fit:cover;border-radius:12px;display:block}
-
-.avatar-header{display:flex;flex-direction:column;align-items:center;margin-top:0.5rem}
-.avatar-header h2{margin:0;font-size:1.1rem}
-.avatar-header .role{margin:0;font-size:0.9rem;color:var(--muted)}
-
-.card-content{display:flex;flex-direction:column;gap:0.75rem}
-.bio{margin:0;color:#111827}
-.time-row{margin:0;color:var(--muted)}
-
-.social-links{list-style:none;padding:0;margin:0;display:flex;gap:0.5rem;flex-wrap:wrap}
-.social-links a{display:inline-block;padding:0.35rem 0.6rem;border-radius:6px;color:var(--accent);text-decoration:none;border:1px solid transparent}
-.social-links a:focus{outline:3px solid rgba(37,99,235,0.18);box-shadow:0 0 0 3px rgba(37,99,235,0.12);}
-
-.lists{display:flex;gap:1rem;flex-wrap:wrap}
-.lists h3{margin:0 0 0.25rem 0}
-.lists ul{margin:0;padding-left:1.2rem;color:var(--muted)}
-
-.avatar-controls{margin-top:0.5rem;display:flex;flex-direction:column;gap:0.4rem}
-.avatar-controls input[type="url"], .avatar-controls input[type="file"]{padding:0.35rem;border-radius:6px;border:1px solid #e5e7eb}
-.avatar-controls button{background:var(--accent);color:white;padding:0.5rem 0.75rem;border:none;border-radius:6px;cursor:pointer}
-.avatar-controls button:focus{outline:3px solid rgba(37,99,235,0.18)}
-
-.sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
-
-@media (min-width: 700px){
-  .profile-card{padding:1.25rem;gap:1.25rem}
-  .card-body{flex-direction:row;gap:1.25rem}
-  .avatar-figure{flex:0 0 140px}
-  .card-content{flex:1}
-  .avatar{width:140px;height:140px}
-  .avatar-header{align-items:flex-start;padding-left:0}
-  .lists{flex-direction:row}
+.card-btn {
+  background: var(--accent);
+  color: var(--card);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
-@media (min-width: 1000px){
-  .profile-card{max-width:1000px}
+.card-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
 }
 
-/* Mobile specific tweaks */
-@media (max-width: 480px) {
-  body { padding: 1rem; }
-  .site-header.overlap { margin: -1.25rem -0.5rem 0 -0.5rem; padding: 0.5rem; border-radius: 8px; }
-  .top-nav { flex-direction: column; gap: 0.5rem; align-items: center; }
-  .top-nav a { display: inline-block; padding: 0.4rem 0.6rem; }
-  .profile-card { padding: 0.75rem; }
-  .avatar { width: 110px; height: 110px; margin: 0 auto; }
-  .avatar-figure { text-align: center; }
-  .avatar-header { align-items: center; }
-  .card-body { gap: 0.75rem; }
-  .form-row { flex-direction: column; }
-  main { padding: 0.75rem; }
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--bg);
+  margin: 0;
 }
 
-/* Slightly larger phones / small tablets */
-@media (min-width: 481px) and (max-width: 699px) {
-  .top-nav { gap: 0.6rem; }
-  .avatar { width: 120px; height: 120px; margin: 0 auto; }
-  .profile-card { padding: 0.9rem; }
+.time-row strong {
+  font-weight: 600;
+  color: var(--text);
 }
 
-/* top navigation */
-.site-header{display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;padding:0.5rem 1rem;background:var(--nav-bg);border-radius:8px; padding-bottom: 10px;}
-.brand a{font-weight:700;color:var(--text);text-decoration:none}
-.top-nav{display:flex;gap:0.75rem;align-items:center}
-.top-nav a{color:var(--muted);text-decoration:none;padding:0.35rem 0.5rem;border-radius:6px}
-.top-nav a:hover{background:rgba(0,0,0,0.04)}
-
-/* Hamburger / mobile nav */
-.nav-toggle{display:none;background:transparent;border:0;padding:0.25rem;border-radius:6px;cursor:pointer}
-.nav-toggle:focus{outline:3px solid rgba(37,99,235,0.18)}
-.nav-toggle .hamburger{display:inline-block;width:28px;height:18px;position:relative}
-.nav-toggle .hamburger div,
-.nav-toggle .hamburger div::before,
-.nav-toggle .hamburger div::after{content:"";position:absolute;height:2px;background:color-mix(in srgb, var(--text) 85%, black 15%);left:0;right:0;border-radius:2px}
-.nav-toggle .hamburger div{top:50%;transform:translateY(-50%)}
-.nav-toggle .hamburger div::before{top:-7px}
-.nav-toggle .hamburger div::after{top:7px}
-
-/* Mobile: hide nav by default and show toggle */
-@media (max-width: 699px){
-  /* make the toggle highly visible on mobile: circular accent background and white bars */
-  .nav-toggle{display:inline-flex;align-items:center;z-index:1300;background:var(--accent);border:1px solid rgba(0,0,0,0.06);padding:0.45rem;border-radius:999px;box-shadow:0 6px 18px rgba(16,24,40,0.12)}
-  .nav-toggle .hamburger{width:34px;height:22px}
-  .nav-toggle .hamburger div,
-  .nav-toggle .hamburger div::before,
-  .nav-toggle .hamburger div::after{background: #fff}
-  .nav-toggle{width:44px;height:44px;justify-content:center}
-  .top-nav{display:none;position:absolute;top:100%;right:0;background:var(--card);box-shadow:0 6px 18px rgba(16,24,40,0.08);border-radius:8px;padding:0.5rem;flex-direction:column;min-width:160px;z-index:999}
-  .top-nav a{display:block;padding:0.6rem 0.9rem}
-  .top-nav.show{display:flex}
-  /* ensure header stays relative for absolute positioning */
-  .site-header{position:relative}
+/* Avatar Update Controls */
+.avatar-controls {
+  padding-top: 1rem;
+  border-top: 1px dashed #e5e7eb;
 }
 
-/* Sticky headers for About and Contact pages */
-.site-header{position:fixed;top:0;left:0;right:0;z-index:1400;background:var(--card);box-shadow:0 6px 18px rgba(16,24,40,0.06);border-radius:0;}
-.has-sticky{padding-top:64px}
-
-@media (max-width:699px){
-  .has-sticky{padding-top:56px}
+.avatar-controls h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--accent);
 }
 
-/* card-specific toggle: place it inside the top-right of the card on small screens */
-@media (max-width: 699px){
-  .card-nav-toggle{position:absolute;top:8px;right:8px;z-index:1250;background:var(--card);}
-  .profile-card{position:relative}
+.avatar-controls label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
-@media (max-width: 699px){
-  /* ensure card toggle also uses accent background */
-  .card-nav-toggle{background:var(--accent);border:1px solid rgba(0,0,0,0.06)}
-  .card-nav-toggle .hamburger div,
-  .card-nav-toggle .hamburger div::before,
-  .card-nav-toggle .hamburger div::after{background:#fff}
+.avatar-controls input[type="url"],
+.avatar-controls input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
 }
 
-/* header avatar */
-.header-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-right:0.5rem;border:2px solid transparent}
-.brand-name{font-weight:700;vertical-align:middle}
-.brand a:hover .brand-name, .brand a:focus .brand-name{color:var(--card);background:var(--accent);padding:0.15rem 0.4rem;border-radius:6px}
-.brand a:hover .header-avatar, .brand a:focus .header-avatar{border-color:var(--accent)}
-
-/* forms */
-.form-row{display:flex;flex-direction:column;margin-bottom:0.75rem}
-.form-row label{font-weight:600;margin-bottom:0.25rem}
-.form-row input,.form-row textarea{padding:0.5rem;border:1px solid #e5e7eb;border-radius:6px}
-.error{color:#b91c1c;font-size:0.95rem;margin-top:0.25rem}
-.success{color:#065f46;font-size:1rem;margin-top:0.5rem}
-
-/* Pages: About & Contact layout */
-main{max-width:900px;margin:0 auto;padding:1rem}
-
-/* About page */
-main h1{font-size:1.6rem;margin-bottom:0.25rem}
-main header nav{margin-bottom:1rem}
-main section{background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 2px 8px rgba(16,24,40,0.04);margin-bottom:0.75rem}
-main section h2{margin-top:0;margin-bottom:0.5rem}
-
-/* Contact page */
-form#contactForm{background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 2px 12px rgba(16,24,40,0.06);max-width:720px;margin:0 auto}
-.form-row{margin-bottom:0.85rem}
-.form-row input[type="text"], .form-row input[type="email"], .form-row input, .form-row textarea{width:100%;}
-.form-row button, .form-row button[type="submit"]{background:var(--accent);color:white;border:none;padding:0.6rem 0.9rem;border-radius:8px;cursor:pointer}
-.form-row button:focus{outline:3px solid rgba(37,99,235,0.18)}
-
-/* Responsive enhancements */
-@media (min-width:700px){
-  .form-row{flex-direction:row;align-items:center}
-  .form-row label{flex:0 0 180px;margin-bottom:0}
-  .form-row input,.form-row textarea{flex:1}
-  form#contactForm{padding:1.25rem}
+#applyAvatar {
+  background: var(--muted);
+  color: var(--card);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  margin-top: 0.5rem;
 }
+#applyAvatar:hover {
+  background: #4b5563; /* Slightly darker grey */
+}
+
+/* ------------------------------------------------ */
+/* About Page (test-about-page) Specific Styles */
+/* ------------------------------------------------ */
+
+/* Style for all reflective sections */
+main section {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.06);
+  margin-bottom: 1.5rem;
+}
+
+main section h2 {
+  color: var(--accent);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--bg);
+  padding-bottom: 0.5rem;
+}
+
+/* Social Links */
+.social-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem 0;
+}
+.social-links a {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+.social-links a:hover {
+  border-bottom: 2px solid var(--accent);
+  text-decoration: none;
+}
+
+/* Hobbies and Dislikes Lists */
+.lists {
+  display: flex;
+  flex-direction: column; /* Stacked on mobile */
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.lists h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+.lists ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.lists li {
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+  padding-left: 1.25em;
+  text-indent: -1.25em;
+}
+.lists li::before {
+  content: "•";
+  color: var(--accent);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-right: 0.25em;
+}
+
+@media (min-width: 600px) {
+  .lists {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2rem;
+  }
+  .lists > div {
+    flex: 1;
+  }
+}
+
+
+/* ------------------------------------------------ */
+/* Contact Page Form Styles */
+/* ------------------------------------------------ */
+
+form#contactForm {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.06);
+  max-width: 600px;
+  margin: 1.5rem auto;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.form-row label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.form-row input,
+.form-row textarea {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg); /* Slightly off-white background for input */
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  background: var(--card);
+}
+
+/* Error and Success Messages */
+.error {
+  color: var(--error);
+  font-size: 0.875rem; /* Small text */
+  margin-top: 0.4rem;
+  font-weight: 500;
+  min-height: 1.25rem; /* Reserve space to prevent layout shift */
+}
+
+.success {
+  background: #ecfdf5; /* Light green background */
+  color: var(--success);
+  padding: 1rem;
+  border: 1px solid #a7f3d0;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Submit Button */
+form button[type="submit"] {
+  background: var(--accent);
+  color: var(--card);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+form button[type="submit"]:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Screen Reader Text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 
 
 
