@@ -9,7 +9,7 @@
 </head>
 <body>
   <main class="has-sticky" data-testid="test-about-page">
-    <header class="site-header sticky">
+    <header class="site-header">
       <div class="brand"><a href="index.html"><img src="photo (1).jpg" alt="Owoade Gratitude" class="header-avatar" data-testid="test-header-avatar"/></a></div>
       <button class="nav-toggle" aria-controls="top-navigation" aria-expanded="false" aria-label="Open navigation">
         <span class="hamburger" aria-hidden="true"><div></div></span>
@@ -19,42 +19,15 @@
         <a href="contact.html">Contact</a>
       </nav>
     </header>
-
-    <section aria-labelledby="bio" data-testid="test-about-bio">
-      <!-- card-level hamburger for small screens -->
-      <button class="nav-toggle card-nav-toggle" aria-controls="top-navigation" aria-expanded="false" aria-label="Open navigation">
-        <span class="hamburger" aria-hidden="true"><div></div></span>
-      </button>
+<!-- 
+    <section style="margin-top: 2000;" aria-labelledby="bio" data-testid="test-about-bio">
       <h2 id="bio">Bio</h2>
       <p>I am Owoade Gratitude, a frontend developer currently building accessible, responsive UI.</p>
-    </section>
+    </section> -->
+    
 
-    <section aria-labelledby="goals" data-testid="test-about-goals">
-      <h2 id="goals">Goals in this program</h2>
-      <ul>
-        <li>Improve frontend skills</li>
-        <li>Learn accessibility best practices</li>
-        <li>Ship polished UI</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="confidence" data-testid="test-about-confidence">
-      <h2 id="confidence">Areas of low confidence</h2>
-      <p>I want to improve on backend integrations and testing.</p>
-    </section>
-
-    <section aria-labelledby="future" data-testid="test-about-future-note">
-      <h2 id="future">Note to future self</h2>
-      <p>Keep practicing, build projects, and review fundamentals regularly.</p>
-    </section>
-
-    <section aria-labelledby="extra" data-testid="test-about-extra">
-      <h2 id="extra">Extra thoughts</h2>
-      <p>This program is a great opportunity to learn through building.</p>
-    </section>
-    <!-- Moved from index: full profile details -->
-    <section aria-label="Profile details" class="profile-details">
-      <h3>Bio</h3>
+    <section style="margin-top: 400px;" aria-labelledby="goals" data-testid="test-about-goals">
+  <h3>Bio</h3>
       <p data-testid="test-user-bio">Passionate frontend developer and designer, currently interning with HNG. I love building creative interfaces and helping brands tell visual stories.</p>
 
       <nav aria-label="Social links">
@@ -83,6 +56,30 @@
           </ul>
         </div>
       </section>
+
+
+    <section aria-labelledby="confidence" data-testid="test-about-confidence">
+      <h2 id="confidence">Areas of low confidence</h2>
+      <p>I want to improve on backend integrations and testing.</p>
+    </section>
+
+    <section aria-labelledby="future" data-testid="test-about-future-note">
+      <h2 id="future">Note to future self</h2>
+      <p>Keep practicing, build projects, and review fundamentals regularly.</p>
+    </section>
+
+    <section aria-labelledby="extra" data-testid="test-about-extra">
+      <h2 id="extra">Extra thoughts</h2>
+      <p>This program is a great opportunity to learn through building.</p>
+    </section>
+    <!-- Moved from index: full profile details -->
+    <section aria-label="Profile details" class="profile-details">
+  <h2 id="goals">Goals in this program</h2>
+      <ul>
+        <li>Improve frontend skills</li>
+        <li>Learn accessibility best practices</li>
+        <li>Ship polished UI</li>
+      </ul>
 
       
     </section>
